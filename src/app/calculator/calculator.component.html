@@ -30,11 +30,11 @@
     <h3>NET PAY RESULT</h3>
   
     <div class="result-group">
-      <p><strong>Gross Pay:</strong> {{ grossPay | currency }}</p>
-      <p><strong>Non-Cash Benefits:</strong> {{ nonCashBenefits | currency }}</p>
-      <p><strong>Pension Contribution:</strong> {{ pensionContribution | currency }}</p>
-      <p><strong>Other Deductions:</strong> {{ otherDeductions | currency }}</p>
-      <p><strong>Net Pay:</strong> {{ netPay | currency }}</p>
+      <p><strong>Gross Pay:</strong> Ksh {{ grossPay }}</p>
+      <p><strong>Non-Cash Benefits:</strong> Ksh {{ nonCashBenefits }}</p>
+      <p><strong>Pension Contribution:</strong> Ksh {{ pensionContribution }}</p>
+      <p><strong>Other Deductions:</strong> Ksh {{ otherDeductions }}</p>      
+      <p><strong>Net Pay:</strong> Ksh {{ netPay }}</p>
     </div>
   
     <button class="back-button" (click)="reset()">Calculate Again</button>
