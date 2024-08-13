@@ -14,22 +14,44 @@ export class CalculatorComponent {
   netPay: number | null = null;
   showEntryScreen: boolean = true;
 
+  // Add these to display on the output screen
+  nssfTierI: number = 420.00;
+  nssfTierII: number = 1740.00;
+  nhif: number = 1600.00;
+  payeTax: number = 0;
+
   constructor(private http: HttpClient) { }
 
   calculate() {
+    const taxableIncome = this.grossPay - this.pensionContribution - this.otherDeductions;
+    this.payeTax = this.calculatePayeTax(taxableIncome);
+
+    // Now make the request to the backend to get any additional calculations
     const requestData = {
       grossPay: this.grossPay,
       nonCashBenefits: this.nonCashBenefits,
       pensionContribution: this.pensionContribution,
-      otherDeductions: this.otherDeductions
+      otherDeductions: this.otherDeductions,
+      payeTax: this.payeTax
     };
 
-    // Make a POST request to the backend
     this.http.post<{ netPay: number }>('http://localhost:3000/calculate-net-pay', requestData)
       .subscribe(response => {
         this.netPay = response.netPay;
         this.showEntryScreen = false;
       });
+  }
+
+  calculatePayeTax(income: number): number {
+    let tax = 0;
+    if (income <= 24000) {
+      tax = income * 0.10;
+    } else if (income <= 32333) {
+      tax = (24000 * 0.10) + ((income - 24000) * 0.25);
+    } else {
+      tax = (24000 * 0.10) + ((32333 - 24000) * 0.25) + ((income - 32333) * 0.30);
+    }
+    return tax;
   }
 
   reset() {
@@ -43,5 +65,6 @@ export class CalculatorComponent {
     this.pensionContribution = 0;
     this.otherDeductions = 0;
     this.netPay = null;
+    this.payeTax = 0;
   }
 }

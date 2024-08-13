@@ -1,42 +1,56 @@
 <div *ngIf="showEntryScreen" class="entry-container">
-    <h2>NET PAY CALCULATOR</h2>
-    <p>Jul 2023 - Dec 2024</p>
-  
-    <form (ngSubmit)="calculate()">
-      <div class="form-group">
-        <label for="grossPay">Gross Pay:</label>
-        <input type="number" id="grossPay" [(ngModel)]="grossPay" name="grossPay" required />
-      </div>
-      <div class="form-group">
-        <label for="nonCashBenefits">Non-Cash Benefits:</label>
-        <input type="number" id="nonCashBenefits" [(ngModel)]="nonCashBenefits" name="nonCashBenefits" value="0" />
-      </div>
-      <div class="form-group">
-        <label for="pensionContribution">Pension Contribution:</label>
-        <input type="number" id="pensionContribution" [(ngModel)]="pensionContribution" name="pensionContribution" value="0" />
-      </div>
-      <div class="form-group">
-        <label for="otherDeductions">Other Allowable Deductions:</label>
-        <input type="number" id="otherDeductions" [(ngModel)]="otherDeductions" name="otherDeductions" value="0" />
-      </div>
-      <div class="button-group">
-        <button type="submit" class="calculate-button">Calculate Net Pay</button>
-        <button type="button" (click)="clearAll()" class="clear-button">Clear All</button>
-      </div>
-    </form>
-  </div>
-  
-  <div *ngIf="!showEntryScreen" class="output-container">
-    <h3>NET PAY RESULT</h3>
-  
-    <div class="result-group">
-      <p><strong>Gross Pay:</strong> Ksh {{ grossPay }}</p>
-      <p><strong>Non-Cash Benefits:</strong> Ksh {{ nonCashBenefits }}</p>
-      <p><strong>Pension Contribution:</strong> Ksh {{ pensionContribution }}</p>
-      <p><strong>Other Deductions:</strong> Ksh {{ otherDeductions }}</p>      
-      <p><strong>Net Pay:</strong> Ksh {{ netPay }}</p>
+  <h2>NET PAY CALCULATOR</h2>
+  <p>Jul 2023 - Dec 2024</p>
+
+  <form (ngSubmit)="calculate()">
+    <div class="form-group">
+      <label for="grossPay">Gross Pay:</label>
+      <input type="number" id="grossPay" [(ngModel)]="grossPay" name="grossPay" required />
     </div>
-  
-    <button class="back-button" (click)="reset()">Calculate Again</button>
+    <div class="form-group">
+      <label for="nonCashBenefits">Non-Cash Benefits:</label>
+      <input type="number" id="nonCashBenefits" [(ngModel)]="nonCashBenefits" name="nonCashBenefits" value="0" />
+    </div>
+    <div class="form-group">
+      <label for="pensionContribution">Pension Contribution:</label>
+      <input type="number" id="pensionContribution" [(ngModel)]="pensionContribution" name="pensionContribution"
+        value="0" />
+    </div>
+    <div class="form-group">
+      <label for="otherDeductions">Other Allowable Deductions:</label>
+      <input type="number" id="otherDeductions" [(ngModel)]="otherDeductions" name="otherDeductions" value="0" />
+    </div>
+    <div class="button-group">
+      <button type="submit" class="calculate-button">Calculate Net Pay</button>
+      <button type="button" (click)="clearAll()" class="clear-button">Clear All</button>
+    </div>
+  </form>
+
+  <!-- Watermark for Entry Screen -->
+  <div class="watermark watermark-entry">
+    * Please fill in all fields before calculating net pay *
   </div>
-  
+</div>
+
+<div *ngIf="!showEntryScreen" class="output-container">
+  <h3>NET PAY RESULT</h3>
+
+  <div class="result-group">
+    <p><strong>Gross Pay:</strong> Ksh {{ grossPay }}</p>
+    <p><strong>Non-Cash Benefits:</strong> Ksh {{ nonCashBenefits }}</p>
+    <p><strong>Pension Contribution:</strong> Ksh {{ pensionContribution }}</p>
+    <p><strong>Other Deductions:</strong> Ksh {{ otherDeductions }}</p>
+    <p><strong>PAYE Tax:</strong> Ksh {{ payeTax }}</p>
+    <p><strong>NSSF (Tier I):</strong> Ksh {{ nssfTierI }}</p>
+    <p><strong>NSSF (Tier II):</strong> Ksh {{ nssfTierII }}</p>
+    <p><strong>NHIF:</strong> Ksh {{ nhif }}</p>
+    <p><strong>Net Pay:</strong> Ksh {{ netPay }}</p>
+  </div>
+
+  <button class="back-button" (click)="reset()">Calculate Again</button>
+
+  <!-- Watermark for Output Screen -->
+  <div class="watermark watermark-output">
+    * Results based on the entered data. Verify all inputs for accuracy. *
+  </div>
+</div>

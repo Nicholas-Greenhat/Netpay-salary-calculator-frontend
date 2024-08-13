@@ -1,111 +1,165 @@
 /* Entry Screen (Form) */
 .entry-container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Required for watermark positioning */
+}
+
+.entry-container h2,
+.output-container h3 {
+  text-align: center;
+  color: #333;
+}
+
+.entry-container p {
+  text-align: center;
+  color: #777;
+  font-size: 0.9em;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.form-group input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculate-button,
+.clear-button {
+  flex: 1;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.calculate-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.clear-button {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Output Screen */
+.output-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #eef2f3;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Required for watermark positioning */
+}
+
+.output-container h3 {
+  margin-bottom: 20px;
+  color: #4CAF50;
+}
+
+.result-group {
+  margin-bottom: 20px;
+}
+
+.result-group p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+
+.result-group p strong {
+  font-weight: bold;
+  color: #333;
+}
+
+.back-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Watermark Styles */
+.watermark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  /* Position watermark at the bottom */
+  text-align: center;
+  font-size: 0.8em;
+  color: #999;
+  opacity: 0.6;
+}
+
+.watermark-entry {
+  color: #ff5722;
+  /* Specific color for entry screen watermark */
+}
+
+.watermark-output {
+  color: #3f51b5;
+  /* Specific color for output screen watermark */
+}
+
+
+
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+
+  .entry-container,
+  .output-container {
+    padding: 10px;
+    max-width: 100%;
   }
-  
-  .entry-container h2,
-  .output-container h3 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .entry-container p {
-    text-align: center;
-    color: #777;
-    font-size: 0.9em;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-  }
-  
+
   .button-group {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
-  
+
   .calculate-button,
   .clear-button {
-    flex: 1;
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  .calculate-button {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .clear-button {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  /* Output Screen */
-  .output-container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #eef2f3;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .output-container h3 {
-    margin-bottom: 20px;
-    color: #4CAF50;
-  }
-  
-  .result-group {
-    margin-bottom: 20px;
-  }
-  
-  .result-group p {
-    font-size: 1em;
-    line-height: 1.6;
     margin: 5px 0;
+    flex: none;
   }
-  
-  .result-group p strong {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .back-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1em;
-    cursor: pointer;
-  }
-  
-  .back-button:hover {
-    background-color: #0056b3;
-  }
-  
+}
